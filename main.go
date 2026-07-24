@@ -3,8 +3,7 @@ package main
 import "fmt"
 
 func main() {
-	// input of the first number with validation
-	// input of the second number with validation
+
 	for {
 		var (
 			a      float64
@@ -42,6 +41,8 @@ func main() {
 		}
 		fmt.Printf("Answer: %.2f %v %.2f = %.2f\n", a, c, b, result)
 
+		// Prompt the user to continue or exit.
+		// If the input is invalid, display an error message and repeat the loop.
 		fmt.Println("Do you want to continue? 1 - Yes, 2 - No")
 		fmt.Scan(&choice)
 
@@ -58,7 +59,8 @@ func main() {
 	}
 }
 
-//getNumbers gets user input
+// getNumber prompts the user to enter a number and validates the input.
+// It keeps asking until a valid numeric value is provided.
 func getNumber() float64 {
 	var num float64
 	for {
@@ -70,6 +72,8 @@ func getNumber() float64 {
 	}
 }
 
+// getMark prompts the user to enter an operator symbol (+, -, *, /).
+// It keeps asking until a valid string input is provided.
 func getMark() string {
 	var mark string
 	for {
