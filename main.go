@@ -18,19 +18,19 @@ func main() {
 		err := getInput("Enter the first number: ", &a)
 		if err != nil {
 			fmt.Println("Input error!", err)
-			return
+			continue
 		}
 
 		err = getInput("Enter the second number: ", &b)
 		if err != nil {
 			fmt.Println("Input error!", err)
-			return
+			continue
 		}
 
 		err = getInput("Enter the operator (+, -, *, /): ", &c)
 		if err != nil {
 			fmt.Println("Input error!", err)
-			return
+			continue
 		}
 
 		// calculations
