@@ -1,6 +1,8 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 func main() {
 
@@ -13,14 +15,23 @@ func main() {
 			choice int
 		)
 
-		fmt.Print("Enter the first number: ")
-		a = getNumber()
+		err := getInput("Enter the first number: ", &a)
+		if err != nil {
+			fmt.Println("Input error!", err)
+			continue
+		}
 
-		fmt.Print("Enter the second number: ")
-		b = getNumber()
+		err = getInput("Enter the second number: ", &b)
+		if err != nil {
+			fmt.Println("Input error!", err)
+			continue
+		}
 
-		fmt.Print("Enter the operator (+, -, *, /): ")
-		c = getMark()
+		err = getInput("Enter the operator (+, -, *, /): ", &c)
+		if err != nil {
+			fmt.Println("Input error!", err)
+			continue
+		}
 
 		// calculations
 		switch c {
@@ -59,28 +70,13 @@ func main() {
 	}
 }
 
-// getNumber prompts the user to enter a number and validates the input.
-// It keeps asking until a valid numeric value is provided.
-func getNumber() float64 {
-	var num float64
+// getInput prompts the user for input from [io.Stdin].
+func getInput(msg string, inp any) error {
 	for {
-		_, err := fmt.Scan(&num)
-		if err == nil {
-			return num
-		}
-		fmt.Println("Error! Enter a number, not text!")
-	}
-}
+		fmt.Print(msg)
 
-// getMark prompts the user to enter an operator symbol (+, -, *, /).
-// It keeps asking until a valid string input is provided.
-func getMark() string {
-	var mark string
-	for {
-		_, err := fmt.Scan(&mark)
-		if err == nil {
-			return mark
-		}
-		fmt.Println("Error: please enter a symbol!")
+		_, err := fmt.Scan(inp)
+
+		return err
 	}
 }
