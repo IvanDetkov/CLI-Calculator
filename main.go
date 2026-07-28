@@ -15,6 +15,7 @@ func main() {
 			choice int
 		)
 
+		//get user input
 		err := getInput("Enter the first number: ", &a)
 		if err != nil {
 			fmt.Println("Input error!", err)
